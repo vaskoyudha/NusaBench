@@ -1,0 +1,14 @@
+.venv/
+dist/
+build/
+*.egg-info/
+site/
+.mypy_cache/
+__pycache__/
+.pytest_cache/
+*.pyc
+.venv
+.env
+.DS_Store
+.sisyphus/evidence/
+.sisyphus/
