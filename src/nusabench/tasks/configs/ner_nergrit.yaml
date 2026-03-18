@@ -1,0 +1,23 @@
+task: ner_nergrit
+dataset_path: indonlp/indonlu
+dataset_name: nergrit
+test_split: test
+validation_split: validation
+output_type: generate_until
+doc_to_text: "Teks: {{tokens_joined}}\nEntitas yang ditemukan:"
+doc_to_target: "{{entities_formatted}}"
+generation_kwargs:
+  max_tokens: 256
+  stop_sequences: ["\n\n"]
+metric_list:
+  - metric: f1
+    aggregation: entity_level
+description: "Named entity recognition on Indonesian text (NERGrit from IndoNLU)"
+metadata:
+  source: IndoNLU
+  language: id
+  task_type: sequence_labeling
+  entity_types:
+    - PER
+    - LOC
+    - ORG
