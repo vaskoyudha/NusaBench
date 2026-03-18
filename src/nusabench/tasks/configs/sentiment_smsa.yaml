@@ -1,0 +1,23 @@
+task: sentiment_smsa
+dataset_path: indonlp/indonlu
+dataset_name: smsa
+test_split: test
+validation_split: validation
+output_type: multiple_choice
+doc_to_text: "Teks: {{text}}\nSentimen dari teks di atas adalah:"
+doc_to_target: "{{label}}"
+target_choices:
+  - positif
+  - negatif
+  - netral
+metric_list:
+  - metric: accuracy
+    aggregation: mean
+  - metric: f1
+    aggregation: macro
+description: "Sentiment analysis on Indonesian social media text (SmSA from IndoNLU)"
+metadata:
+  source: IndoNLU
+  language: id
+  task_type: classification
+  num_classes: 3
