@@ -1,0 +1,21 @@
+task: dummy_task
+dataset_path: dummy/dataset
+dataset_name: null
+output_type: generate_until
+train_split: train
+validation_split: validation
+test_split: test
+doc_to_text: "Teks: {{text}}"
+doc_to_target: "{{label}}"
+metric_list:
+  - metric: exact_match
+    aggregation: mean
+num_fewshot: 0
+description: "A dummy task for testing"
+target_choices:
+  - positif
+  - negatif
+  - netral
+generation_kwargs:
+  max_tokens: 128
+preprocess_fn: null
