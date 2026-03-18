@@ -1,0 +1,17 @@
+{
+  "last_updated": "2025-01-01",
+  "models": [
+    {
+      "name": "DummyModel (baseline)",
+      "overall": 0.25,
+      "sentiment_smsa": 0.33,
+      "nli_wrete": 0.50,
+      "qa_facqa": 0.10,
+      "ner_nergrit": 0.05,
+      "summarization_indosum": 0.15,
+      "mt_nusax": 0.02,
+      "toxicity_id": 0.50,
+      "cultural_indommu": 0.25
+    }
+  ]
+}

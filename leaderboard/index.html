@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NusaBench Leaderboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="title-container">
+                <h1>NusaBench Leaderboard</h1>
+                <p class="subtitle">Indonesian LLM Evaluation Benchmark</p>
+                <p class="last-updated" id="last-updated">Last updated: Loading...</p>
+            </div>
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">🌓 Toggle Theme</button>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="table-container">
+            <table id="leaderboard-table">
+                <thead>
+                    <tr>
+                        <th data-sort="rank" class="sortable">Rank ↕</th>
+                        <th data-sort="name" class="sortable">Model ↕</th>
+                        <th data-sort="overall" class="sortable">Overall ↕</th>
+                        <th data-sort="sentiment_smsa" class="sortable">Sentiment ↕</th>
+                        <th data-sort="nli_wrete" class="sortable">NLI ↕</th>
+                        <th data-sort="qa_facqa" class="sortable">QA ↕</th>
+                        <th data-sort="ner_nergrit" class="sortable">NER ↕</th>
+                        <th data-sort="summarization_indosum" class="sortable">Summarization ↕</th>
+                        <th data-sort="mt_nusax" class="sortable">MT ↕</th>
+                        <th data-sort="toxicity_id" class="sortable">Toxicity ↕</th>
+                        <th data-sort="cultural_indommu" class="sortable">Cultural ↕</th>
+                    </tr>
+                </thead>
+                <tbody id="table-body">
+                    <tr><td colspan="11" class="loading">Loading data...</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>NusaBench v0.1.0 | Apache 2.0</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
