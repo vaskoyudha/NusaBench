@@ -1,7 +1,5 @@
 from __future__ import annotations
 
-import json
-
 import typer
 from rich.console import Console
 from rich.table import Table
@@ -37,26 +35,10 @@ def evaluate(
         console.print(f"[bold red]Error:[/] {exc}")
         raise typer.Exit(code=1) from exc
 
-    result_dict = result.to_dict()
-    with open(output, "w", encoding="utf-8") as fh:
-        json.dump(result_dict, fh, indent=2)
+    from nusabench.reporting import export_json, print_results
 
-    table = Table(title="Evaluation Results")
-    table.add_column("Task", style="cyan")
-    table.add_column("Metric", style="green")
-    table.add_column("Score", style="yellow")
-    table.add_column("Samples", style="white")
-
-    for task_name, task_result in result.results.items():
-        for metric_name, score in task_result.metrics.items():
-            table.add_row(
-                task_name,
-                metric_name,
-                f"{score:.4f}",
-                str(task_result.num_samples),
-            )
-
-    console.print(table)
+    export_json(result, output)
+    print_results(result)
     console.print(f"\n[bold green]Results saved to:[/] {output}")
 
 
