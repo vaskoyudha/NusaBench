@@ -1,0 +1,21 @@
+task: toxicity_id
+dataset_path: SetFit/toxic_conversations
+test_split: test
+validation_split: validation
+output_type: multiple_choice
+doc_to_text: "Teks: {{text}}\nApakah teks di atas mengandung bahasa kasar atau ujaran kebencian?"
+doc_to_target: "{{label}}"
+target_choices:
+  - tidak
+  - ya
+metric_list:
+  - metric: accuracy
+    aggregation: mean
+  - metric: f1
+    aggregation: binary
+description: "Toxicity / abusive language detection (binary)"
+metadata:
+  source: SetFit/toxic_conversations
+  language: id
+  task_type: classification
+  num_classes: 2
