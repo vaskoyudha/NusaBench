@@ -1,0 +1,22 @@
+task: nli_wrete
+dataset_path: indonlp/indonlu
+dataset_name: wrete
+test_split: test
+validation_split: validation
+output_type: multiple_choice
+doc_to_text: "Premis: {{premise}}\nHipotesis: {{hypothesis}}\nRelasi antara premis dan hipotesis:"
+doc_to_target: "{{label}}"
+target_choices:
+  - entailment
+  - not_entailment
+metric_list:
+  - metric: accuracy
+    aggregation: mean
+  - metric: f1
+    aggregation: binary
+description: "Textual entailment on Indonesian text (WReTe from IndoNLU)"
+metadata:
+  source: IndoNLU
+  language: id
+  task_type: classification
+  num_classes: 2
