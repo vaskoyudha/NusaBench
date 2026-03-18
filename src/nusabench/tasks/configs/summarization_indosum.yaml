@@ -1,0 +1,19 @@
+task: summarization_indosum
+dataset_path: csebuetnlp/xlsum
+dataset_name: indonesian
+test_split: test
+validation_split: validation
+output_type: generate_until
+doc_to_text: "Rangkum teks berikut:\n\n{{text}}\n\nRangkuman:"
+doc_to_target: "{{summary}}"
+generation_kwargs:
+  max_tokens: 512
+  stop_sequences: ["\n\n"]
+metric_list:
+  - metric: rouge
+    aggregation: mean
+description: "Abstractive summarization of Indonesian news articles (XL-Sum Indonesian)"
+metadata:
+  source: XL-Sum
+  language: id
+  task_type: summarization
