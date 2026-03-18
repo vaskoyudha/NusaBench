@@ -1,0 +1,28 @@
+task: cultural_indommu
+dataset_path: indolem/IndoMMLU
+test_split: test
+validation_split: validation
+output_type: multiple_choice
+doc_to_text: "Pertanyaan: {{question}}\nA. {{choice_a}}\nB. {{choice_b}}\nC. {{choice_c}}\nD. {{choice_d}}\nJawaban:"
+doc_to_target: "{{answer}}"
+target_choices:
+  - A
+  - B
+  - C
+  - D
+metric_list:
+  - metric: accuracy
+    aggregation: mean
+description: "Indonesian cultural and educational knowledge (IndoMMLU, 63+ subjects)"
+metadata:
+  source: IndoMMLU
+  language: id
+  task_type: multiple_choice_qa
+  num_subjects: 63
+  education_levels:
+    - SD
+    - SMP
+    - SMA
+    - University
+  license: CC BY-NC-SA 4.0
+preprocess_fn: nusabench.tasks.mmlu_utils.expand_choices
