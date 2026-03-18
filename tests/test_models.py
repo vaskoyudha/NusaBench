@@ -40,7 +40,9 @@ def test_model_registry_raises_for_unknown_model() -> None:
 
 
 def test_model_registry_lists_dummy() -> None:
-    assert ModelRegistry.list() == ["dummy"]
+    # Ensure the dummy model is registered. Other backends (e.g. 'hf')
+    # may also be registered in CI, so check membership rather than exact list.
+    assert "dummy" in ModelRegistry.list()
 
 
 def test_register_model_decorator_registers_temp_class() -> None:
