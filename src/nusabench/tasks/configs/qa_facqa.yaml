@@ -1,0 +1,21 @@
+task: qa_facqa
+dataset_path: indonlp/indonlu
+dataset_name: facqa
+test_split: test
+validation_split: validation
+output_type: generate_until
+doc_to_text: "Pertanyaan: {{question}}\nJawaban:"
+doc_to_target: "{{answer}}"
+generation_kwargs:
+  max_tokens: 128
+  stop_sequences: ["\n"]
+metric_list:
+  - metric: exact_match
+    aggregation: mean
+  - metric: f1
+    aggregation: mean
+description: "Factoid question answering on Indonesian text (FacQA from IndoNLU)"
+metadata:
+  source: IndoNLU
+  language: id
+  task_type: extractive_qa
