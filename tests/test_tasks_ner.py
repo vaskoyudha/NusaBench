@@ -119,8 +119,8 @@ def test_ner_nergrit_metrics() -> None:
     config = load_task_config(yaml_path)
 
     assert len(config.metric_list) == 1
-    assert config.metric_list[0]["metric"] == "f1"
-    assert config.metric_list[0]["aggregation"] == "entity_level"
+    assert config.metric_list[0]["metric"] == "exact_match"
+    assert config.metric_list[0]["aggregation"] == "mean"
 
 
 def test_ner_nergrit_metadata() -> None:

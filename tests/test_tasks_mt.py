@@ -23,9 +23,9 @@ def test_mt_nusax_config_loads_and_registers(tmp_path: Path) -> None:
     assert config.target_choices is None
     assert config.generation_kwargs.get("max_tokens") == 256
 
-    # Ensure templates render with expected fields (ind->eng)
+    # Ensure templates render with expected fields (text_1=Indonesian, text_2=English)
     task = Task(config)
-    sample_doc = {"ind": "Halo dunia", "eng": "Hello world"}
+    sample_doc = {"text_1": "Halo dunia", "text_2": "Hello world"}
     prompt = task.format_prompt(sample_doc)
     target = task.format_target(sample_doc)
     assert "Halo dunia" in prompt

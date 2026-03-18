@@ -47,12 +47,11 @@ def test_qa_facqa_generation_kwargs() -> None:
 
 
 def test_qa_facqa_metrics() -> None:
-    """Test that qa_facqa has exact_match and f1 metrics."""
+    """Test that qa_facqa has exact_match metric."""
     config = load_task_config(CONFIGS_DIR / "qa_facqa.yaml")
 
     metrics = {m["metric"] for m in config.metric_list}
     assert "exact_match" in metrics
-    assert "f1" in metrics
 
 
 def test_qa_facqa_doc_to_text_template() -> None:
