@@ -15,3 +15,11 @@ try:
     __all__.append("HuggingFaceModel")
 except ImportError:
     pass
+
+try:
+    _gemini_module = importlib.import_module("nusabench.models.gemini")
+    GeminiModel = cast(type[Model], _gemini_module.__dict__["GeminiModel"])
+
+    __all__.append("GeminiModel")
+except ImportError:
+    pass
