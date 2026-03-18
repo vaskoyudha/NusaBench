@@ -1,0 +1,30 @@
+site_name: NusaBench
+site_url: https://vaskoyudha.github.io/NusaBench/
+repo_url: https://github.com/vaskoyudha/NusaBench
+theme:
+  name: material
+  palette:
+    - scheme: default
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - content.code.copy
+nav:
+  - Home: index.md
+  - Getting Started:
+    - Installation: getting-started/installation.md
+    - Quick Start: getting-started/quickstart.md
+  - User Guide:
+    - CLI Reference: guide/cli.md
+    - Python API: guide/api.md
+    - Tasks: guide/tasks.md
+    - Models: guide/models.md
+  - Contributing: contributing.md
+  - Leaderboard: leaderboard/index.html
