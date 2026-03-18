@@ -53,7 +53,9 @@ def test_load_hf_dataset_calls_load_dataset():
     with patch("datasets.load_dataset") as mock_load:
         mock_load.return_value = mock_dataset
         result = load_hf_dataset("fake/dataset", split="test")
-        mock_load.assert_called_once_with("fake/dataset", None, split="test", cache_dir=None)
+        mock_load.assert_called_once_with(
+            "fake/dataset", None, split="test", cache_dir=None, trust_remote_code=True
+        )
         assert result == [{"text": "hello", "label": 0}]
 
 
@@ -66,7 +68,8 @@ def test_load_hf_dataset_limit():
 
 
 def test_load_hf_dataset_error():
-    with patch("datasets.load_dataset", side_effect=Exception("not found")), pytest.raises(
-        RuntimeError, match="Failed to load dataset"
+    with (
+        patch("datasets.load_dataset", side_effect=Exception("not found")),
+        pytest.raises(RuntimeError, match="Failed to load dataset"),
     ):
         load_hf_dataset("bad/dataset")

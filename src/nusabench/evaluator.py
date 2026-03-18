@@ -45,6 +45,33 @@ class Evaluator:
             processed = [cast(Document, task.preprocess_doc(doc)) for doc in dataset]
             predictions = self._run_task(task, processed)
             references = [task.format_target(doc) for doc in processed]
+
+            # For multiple_choice tasks, normalize references and predictions to choice indices
+            if task.config.output_type == "multiple_choice":
+                choices = task.get_choices()
+                if choices is not None:
+                    # Normalize references to indices
+                    normalized_refs: list[int | str] = []
+                    for ref in references:
+                        if ref.isdigit() or (ref.startswith("-") and ref[1:].isdigit()):
+                            normalized_refs.append(int(ref))
+                        elif ref in choices:
+                            normalized_refs.append(choices.index(ref))
+                        else:
+                            normalized_refs.append(ref)
+                    references = [str(r) for r in normalized_refs]
+
+                    # Normalize predictions to indices
+                    normalized_preds: list[int | str] = []
+                    for pred in predictions:
+                        if pred.isdigit() or (pred.startswith("-") and pred[1:].isdigit()):
+                            normalized_preds.append(int(pred))
+                        elif pred in choices:
+                            normalized_preds.append(choices.index(pred))
+                        else:
+                            normalized_preds.append(pred)
+                    predictions = [str(p) for p in normalized_preds]
+
             metrics = self._compute_metrics(task, predictions, references)
             results[task.config.task] = TaskResult(
                 task_name=task.config.task,

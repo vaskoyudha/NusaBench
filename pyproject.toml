@@ -18,7 +18,7 @@ classifiers = [
 keywords = ["nlp", "evaluation", "benchmark", "indonesian", "bahasa", "llm"]
 
 dependencies = [
-  "datasets>=2.14",
+  "datasets>=2.14,<3.0",
   "evaluate>=0.4",
   "sacrebleu>=2.3",
   "rouge-score>=0.1.2",
