@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from nusabench.tasks import Task, TaskRegistry
+from nusabench.tasks import Task
 from nusabench.tasks.loader import load_task_config
 from nusabench.tasks.ner_utils import format_entities, join_tokens, parse_generated_entities
 
