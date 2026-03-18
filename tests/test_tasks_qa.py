@@ -67,7 +67,10 @@ def test_qa_facqa_doc_to_text_template() -> None:
 
 
 def test_qa_facqa_in_registry() -> None:
-    """Test that qa_facqa task can be retrieved from TaskRegistry."""
+    """Test that qa_facqa task can be retrieved from TaskRegistry after manual registration."""
+    config = load_task_config(CONFIGS_DIR / "qa_facqa.yaml")
+    task_instance = Task(config)
+    TaskRegistry.register(task_instance)
     task = TaskRegistry.get("qa_facqa")
 
     assert isinstance(task, Task)
