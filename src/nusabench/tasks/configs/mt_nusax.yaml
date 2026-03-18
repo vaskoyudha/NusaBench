@@ -1,0 +1,22 @@
+task: mt_nusax
+dataset_path: indonlp/indonesian_nusax
+dataset_name: null
+test_split: test
+validation_split: validation
+output_type: generate_until
+doc_to_text: "Terjemahkan kalimat berikut dari Bahasa Indonesia ke Bahasa Inggris:\n\n{{ind}}\n\nTerjemahan:"
+doc_to_target: "{{eng}}"
+generation_kwargs:
+  max_tokens: 256
+  stop_sequences: ["\n"]
+metric_list:
+  - metric: bleu
+    aggregation: corpus
+  - metric: chrf
+    aggregation: corpus
+description: "Machine translation Indonesian to English (NusaX parallel corpus)"
+metadata:
+  source: NusaX
+  language: id-en
+  task_type: translation
+  direction: id_to_en
